@@ -10,7 +10,7 @@ import java.time.Duration;
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 
-    private WebClient client;
+    private final WebClient client;
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
@@ -21,7 +21,7 @@ public class DemoApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        System.out.println(client.get().uri("http://voelk.org").retrieve().bodyToMono(String.class).block(Duration.ofMillis(1000L)));
+    public void run(String... args) {
+        client.get().uri("https://www.google.de/").retrieve().bodyToMono(String.class).block(Duration.ofMillis(1000L));
     }
 }
